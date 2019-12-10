@@ -9,7 +9,7 @@ const FocusView: React.FC<FocusViewProps> = ({pokemon}) => {
     return (
         <>
             {pokemon.name}
-            <img alt="ditto" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}/>
+            <img alt={`sprite of ${pokemon.name}`} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}/>
         </>
     )
 };

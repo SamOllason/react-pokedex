@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Scroll from './Scroll';
 import CardList from './CardList';
 import FocusView from './FocusView';
 import './App.css';
@@ -20,6 +21,8 @@ export class Pokemon {
 interface AppProps {
   initialQuery: number
 }
+
+const headerBarHeight:number = 100;
 
 const App: React.FC<AppProps> = ({initialQuery}) => {
 
@@ -46,14 +49,21 @@ const App: React.FC<AppProps> = ({initialQuery}) => {
 
   return (
     <div className="tc">
-      <p>Pokdedex</p>
-      <div>
-        <div className="fl w-two-thirds pa2">
-          <CardList cardClicked={cardClicked}/>
+        <div style={{height: `${headerBarHeight}px`}}>
+            <div>Pokdedex</div>
         </div>
-        <div className="fl w-third pa2">
+      <div>
+
+        <div className="fl w-third w-100-m pa2">
+            <Scroll>
+                <CardList cardClicked={cardClicked} headerBarHeight={headerBarHeight}/>
+            </Scroll>
+        </div>
+
+        <div className="fl w-two-thirds w-100-m pa2">
           <FocusView pokemon={activePokemon}/>
         </div>
+
         </div>
     </div>
   );

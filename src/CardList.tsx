@@ -1,20 +1,34 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 interface CardListProps {
     cardClicked: (id: number) => void;
+    headerBarHeight: number
 }
 
-const numbers: Array<number> = [ 1, 2, 3, 4, 5];
+const numbers: Array<number> = [];
+for(let i = 1; i < 151; i++) {
+    numbers.push(i);
+}
+// const numbers: Array<number> = new Array(150).map((u,i) => i + 1);
 console.log({numbers});
 
-const CardList: React.FC<CardListProps> = ({cardClicked}) => {
+const margin: number = 30;
+
+const CardList: React.FC<CardListProps> = ({cardClicked, headerBarHeight}) => {
+
+    const [containerHeight, setContainerHeight] = useState(800);
+
+    useEffect(() => {
+        setContainerHeight(window.innerHeight - headerBarHeight - margin)
+    },);
+
     return (
-        <div className="flex flex-column">
+        <div className="flex flex-column" style={{height: `${containerHeight}px`}}>
             {numbers.map(n => {
                 return (
                     <>
-                        <div className="outline w-25 pa3 mr2" onClick={() => cardClicked(n)}>
-                            <img alt="ditto" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${n}.png`}/>
+                        <div className="outline w-100 pa3 mr2" onClick={() => cardClicked(n)}>
+                            <img alt={`sprite of pokemon ${n}`} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${n}.png`}/>
                         </div>
                     </>
                 )
@@ -22,28 +36,5 @@ const CardList: React.FC<CardListProps> = ({cardClicked}) => {
         </div>
     )
 };
-
-        // {/*<>*/}
-        // {/*    {numbers.map(n => {*/}
-        //
-        // {/*            return ( <div>*/}
-        // {/*                    /!*<img alt="ditto"*!/*/}
-        // {/*                    /!*     src={`https://raw.githubusercontent.com/*!/*/}
-        // {/*                    /!*     PokeAPI/sprites/master/sprites/pokemon/back/${n}.png`}*!/*/}
-        // {/*                    /!*/>*!/*/}
-        //
-        // {/*                    <div className="flex flex-column">*/}
-        // {/*                        <div className="outline w-25 pa3 mr2">*/}
-        // {/*                            <code>n</code>*/}
-        // {/*                        </div>*/}
-        // {/*                    </div>*/}
-        // {/*                </div>*/}
-        // {/*            )*/}
-        // {/*        }*/}
-        // {/*    )}*/}
-        // {/*</>*/}
-    // )
-
-
 
 export default CardList;
