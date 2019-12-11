@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/react-pokedex/static/css/main.d1b05096.chunk.css",
-    "main.js": "/react-pokedex/static/js/main.95774208.chunk.js",
-    "main.js.map": "/react-pokedex/static/js/main.95774208.chunk.js.map",
+    "main.js": "/react-pokedex/static/js/main.b2e2fb02.chunk.js",
+    "main.js.map": "/react-pokedex/static/js/main.b2e2fb02.chunk.js.map",
     "runtime-main.js": "/react-pokedex/static/js/runtime-main.21754b44.js",
     "runtime-main.js.map": "/react-pokedex/static/js/runtime-main.21754b44.js.map",
     "static/css/2.eb45ad44.chunk.css": "/react-pokedex/static/css/2.eb45ad44.chunk.css",
-    "static/js/2.a0c9fb92.chunk.js": "/react-pokedex/static/js/2.a0c9fb92.chunk.js",
-    "static/js/2.a0c9fb92.chunk.js.map": "/react-pokedex/static/js/2.a0c9fb92.chunk.js.map",
+    "static/js/2.eb40228d.chunk.js": "/react-pokedex/static/js/2.eb40228d.chunk.js",
+    "static/js/2.eb40228d.chunk.js.map": "/react-pokedex/static/js/2.eb40228d.chunk.js.map",
     "index.html": "/react-pokedex/index.html",
-    "precache-manifest.a0d76cd0b1c39d7a0516a137fd0ae6e4.js": "/react-pokedex/precache-manifest.a0d76cd0b1c39d7a0516a137fd0ae6e4.js",
+    "precache-manifest.248b7135bcb4bb3c0bd709da4a617c8c.js": "/react-pokedex/precache-manifest.248b7135bcb4bb3c0bd709da4a617c8c.js",
     "service-worker.js": "/react-pokedex/service-worker.js",
     "static/css/2.eb45ad44.chunk.css.map": "/react-pokedex/static/css/2.eb45ad44.chunk.css.map",
     "static/css/main.d1b05096.chunk.css.map": "/react-pokedex/static/css/main.d1b05096.chunk.css.map",
-    "static/js/2.a0c9fb92.chunk.js.LICENSE": "/react-pokedex/static/js/2.a0c9fb92.chunk.js.LICENSE"
+    "static/js/2.eb40228d.chunk.js.LICENSE": "/react-pokedex/static/js/2.eb40228d.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.21754b44.js",
     "static/css/2.eb45ad44.chunk.css",
-    "static/js/2.a0c9fb92.chunk.js",
+    "static/js/2.eb40228d.chunk.js",
     "static/css/main.d1b05096.chunk.css",
-    "static/js/main.95774208.chunk.js"
+    "static/js/main.b2e2fb02.chunk.js"
   ]
 }
