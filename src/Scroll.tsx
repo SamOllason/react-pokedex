@@ -7,7 +7,7 @@ type ScrollProps = {
 const Scroll: React.FC<ScrollProps> = ({children}) => {
 
   return (
-    <div style={{ overflow: 'scroll', border: '5px solid black'}}>
+    <div style={{ overflow: 'scroll'}}>
       {children}
     </div>
   );

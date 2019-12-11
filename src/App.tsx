@@ -4,17 +4,37 @@ import CardList from './CardList';
 import FocusView from './FocusView';
 import './App.css';
 
-export interface pokemonInfo {
-  name: string,
-  num: number
+interface pokeTypeInfo {
+    slow: number
+    type: { name: string}
+}
+
+interface pokeStatInfo {
+    base_stat: number
+    stat: { name: string; url: string }
+}
+
+class Stat {
+    value: number;
+    name: string;
+    constructor(name: string, value: number) {
+        this.name  = name;
+        this.value = value;
+    }
 }
 
 export class Pokemon {
   id: number;
   name: string;
-  constructor(id: number, name: string) {
-    this.id = id;
-    this.name = name
+  types: Array<string>;
+  stats: Array<Stat>;
+  constructor(id: number, name: string, pokeTypes: Array<pokeTypeInfo>, pokeStats: Array<pokeStatInfo>) {
+    this.id    = id;
+    this.name  = name;
+    this.types = pokeTypes.map(t => t.type?.name);
+    this.stats = pokeStats.map(s => {
+        return new Stat(s.stat?.name, s.base_stat)
+    });
   }
 }
 
@@ -26,7 +46,10 @@ const headerBarHeight:number = 100;
 
 const App: React.FC<AppProps> = ({initialQuery}) => {
 
-  const [activePokemon, setActivePokemon] = useState(new Pokemon(initialQuery, 'Bulbasaur'));
+  const [activePokemon, setActivePokemon] =
+      useState(new Pokemon(-1, '', [],
+          [{base_stat: -1, stat: { name: '', url: '' }}]
+      ));
   const [query, setQuery] = useState(initialQuery);
 
   useEffect(() => {
@@ -34,7 +57,8 @@ const App: React.FC<AppProps> = ({initialQuery}) => {
       let url = `https://pokeapi.co/api/v2/pokemon/${query}`;
       const response = await fetch(url);
       const data     = await response.json();
-      const pokemon  = new Pokemon(data.id, data.name);
+      console.log({data});
+      const pokemon  = new Pokemon(data.id, data.name, data.types, data.stats);
       setActivePokemon(pokemon);
     }
 
@@ -49,21 +73,19 @@ const App: React.FC<AppProps> = ({initialQuery}) => {
 
   return (
     <div className="tc">
-        <div style={{height: `${headerBarHeight}px`}}>
-            <div>Pokdedex</div>
-        </div>
-      <div>
-
-        <div className="fl w-third w-100-m pa2">
-            <Scroll>
-                <CardList cardClicked={cardClicked} headerBarHeight={headerBarHeight}/>
-            </Scroll>
+        <div className="bg-red f1 pt1 rotate white" style={{height: `${headerBarHeight}px`}}>
+            <code>Pokédex</code>
         </div>
 
-        <div className="fl w-two-thirds w-100-m pa2">
-          <FocusView pokemon={activePokemon}/>
-        </div>
-
+        <div>
+            <div className="fl w-third pa2 bg-black-70">
+                <Scroll>
+                    <CardList cardClicked={cardClicked} headerBarHeight={headerBarHeight}/>
+                </Scroll>
+            </div>
+            <div className="fl w-two-thirds pa2 bg-black-40">
+              <FocusView pokemon={activePokemon}/>
+            </div>
         </div>
     </div>
   );
