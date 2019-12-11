@@ -15,6 +15,7 @@ const CardList: React.FC<CardListProps> = ({cardClicked, headerBarHeight}) => {
 
     const [containerHeight, setContainerHeight] = useState(800);
 
+    // Todo: consider whether or not to use useLayoutEffect here instead
     useEffect(() => {
         setContainerHeight(window.innerHeight - headerBarHeight )
     },);
